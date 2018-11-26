@@ -1,3 +1,4 @@
 theme: jekyll-theme-slate
 name: Parth Khopkar
 markdown: kramdown
+permalink: /:title/
