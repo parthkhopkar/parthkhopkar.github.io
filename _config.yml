@@ -1,5 +1,14 @@
 theme: jekyll-theme-slate
 name: Parth Khopkar
 markdown: kramdown
-permalink: /:categories/:title
-post_dirs: false
+# applies pretty for all
+permalink: pretty
+
+# overrides permalink for posts
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      permalink: /:year/:month/:day/:title/
