@@ -3,11 +3,6 @@
 
 @import "{{ site.theme }}";
 
-body {
-    margin: 60px auto;
-    width: 70%;
-}
-
 nav ul, footer ul {
     padding: 0px;
     list-style: none;
@@ -17,4 +12,23 @@ nav ul, footer ul {
 nav ul li, footer ul li {
     display: inline;
     margin-right: 20px;
+}
+
+#header_wrap, #main_content_wrap{
+  background:white;
+  border-top: none;
+  border-bottom: none;
+
+}
+
+#header_wrap .inner{
+  padding: 30px 10px 1px 10px;
+}
+
+#main_content {
+  padding-top: 1px;
+}
+
+body{
+  font-size: 20px; 
 }
