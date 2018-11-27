@@ -1,0 +1,46 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+body{
+  font-size: 20px;
+  background: white;
+}
+
+nav ul, footer ul {
+    padding: 0px;
+    list-style: none;
+    font-weight: bold;
+}
+
+nav ul li, footer ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+#header_wrap, #main_content_wrap, #footer_wrap{
+  background:white;
+  border-top: none;
+  border-bottom: none;
+
+}
+
+#header_wrap .inner{
+  padding: 30px 10px 1px 10px;
+}
+
+#main_content {
+  padding-top: 1px;
+}
+
+footer p, footer a{
+  color:#A9A9A9;
+  font-size: 16px;
+  line-height: 0.6;
+}
+
+#footer_wrap .inner{
+  margin-left: auto;
+  margin-right: 0;
+}
