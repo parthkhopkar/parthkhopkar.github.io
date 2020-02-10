@@ -6,7 +6,7 @@ date: 2020-02-09
 
 ![Data Viz]({{site.url}}/assets/img/dataVizTennis_static.jpg)
 
-<div style="text-align: justify">
+<div>
 This Spring semester, I had to create a static visualization as part of an assignment for my Data Visualization class. The data that was provided included various statistics from 10 years of Australian Open Men's finals matches. The aim was to find an interesting story from these numbers. I decided that I wanted to visualize the serve statistics since the service is the only part of the game of Tennis over which a player has complete control over. After agonizing for a long time about the kind of plot to use, I found that radar plots convey the difference between the statistics of the winning and losing players over a period of 10 years at a single glance. 
 
 I used shades of green and yellow to denote the spreads of the winning and the losing players as these colors are usually associated with Tennis. The other visual elements meant to help a viewer understand this visualization is the use of markers for each data point along with a unique color assigned to each player. 
