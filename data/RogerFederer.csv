@@ -1,0 +1,78 @@
+year,round,result,game_diff,score,final
+1,1,1,11,6-3 6-4 6-0,Roger Federer beat Alex Jr. Bogomolov
+1,2,1,9,6-2 6-3 6-4,Roger Federer beat Jeff Morrison
+1,3,1,14,6-3 6-0 6-1,Roger Federer beat Todd Reid
+1,4,1,9,4-6 6-3 6-0 6-4,Roger Federer beat Lleyton Hewitt
+1,5,1,5,7-5 6-4 5-7 6-3,Roger Federer beat David Nalbandian
+1,6,1,9,6-4 6-1 6-4,Roger Federer beat Juan Carlos Ferrero
+1,7,1,7,7-6(3) 6-4 6-2,Roger Federer beat Marat Safin
+2,1,1,14,6-1 6-1 6-2,Roger Federer beat Fabrice Santoro
+2,2,1,7,6-3 6-4 6-4,Roger Federer beat Takao Suzuki
+2,3,1,6,6-3 5-2 ret.,Roger Federer beat Jarkko Nieminen
+2,4,1,9,6-2 6-2 7-6(4),Roger Federer beat Marcos Baghdatis
+2,5,1,7,6-3 6-4 6-4,Roger Federer beat Andre Agassi
+2,6,0,1,5-7 6-4 5-7 7-6(6) 9-7,Marat Safin beat Roger Federer
+2,7,-1,-1,,Player did not play this match
+3,1,1,11,6-2 6-3 6-2,Roger Federer beat Denis Istomin
+3,2,1,13,6-1 6-4 6-0,Roger Federer beat Florian Mayer
+3,3,1,8,6-3 6-4 6-3,Roger Federer beat Max Mirnyi
+3,4,1,7,6-4 6-0 3-6 4-6 6-2,Roger Federer beat Tommy Haas
+3,5,1,0,6-4 3-6 7-6(7) 7-6(5),Roger Federer beat Nikolay Davydenko
+3,6,1,11,6-3 5-7 6-0 6-2,Roger Federer beat Nicolas Kiefer
+3,7,1,10,5-7 7-5 6-0 6-2,Roger Federer beat Marcos Baghdatis
+4,1,1,10,7-5 6-0 6-4,Roger Federer beat Bjorn Phau
+4,2,1,11,6-2 6-3 6-2,Roger Federer beat Jonas Bjorkman
+4,3,1,7,6-3 6-3 7-6(5),Roger Federer beat Mikhail Youzhny
+4,4,1,9,6-2 7-5 6-3,Roger Federer beat Novak Djokovic
+4,5,1,6,6-3 7-6(2) 7-5,Roger Federer beat Tommy Robredo
+4,6,1,12,6-4 6-0 6-2,Roger Federer beat Andy Roddick
+4,7,1,5,7-6(2) 6-4 6-4,Roger Federer beat Fernando Gonzalez
+5,1,1,15,6-0 6-3 6-0,Roger Federer beat Diego Hartfield
+5,2,1,15,6-1 6-2 6-0,Roger Federer beat Fabrice Santoro
+5,3,1,4,6-7(5) 7-6(1) 5-7 6-1 10-8,Roger Federer beat Janko Tipsarevic
+5,4,1,6,6-4 7-6(7) 6-3,Roger Federer beat Tomas Berdych
+5,5,1,5,7-5 7-6(5) 6-4,Roger Federer beat James Blake
+5,6,0,6,7-5 6-3 7-6(5),Novak Djokovic beat Roger Federer
+5,7,-1,-1,,Player did not play this match
+6,1,1,8,6-1 7-6(4) 7-5,Roger Federer beat Andreas Seppi
+6,2,1,12,6-2 6-3 6-1,Roger Federer beat Evgeny Korolev
+6,3,1,8,6-3 6-2 7-6(5),Roger Federer beat Marat Safin
+6,4,1,5,4-6 6-7(4) 6-4 6-4 6-2,Roger Federer beat Tomas Berdych
+6,5,1,15,6-3 6-0 6-0,Roger Federer beat Juan Martin Del Potro
+6,6,1,8,6-2 7-5 7-5,Roger Federer beat Andy Roddick
+6,7,0,1,7-5 3-6 7-6(3) 3-6 6-2,Rafael Nadal beat Roger Federer
+7,1,1,9,4-6 6-2 7-6(2) 6-0,Roger Federer beat Igor Andreev
+7,2,1,11,6-2 6-3 6-2,Roger Federer beat Victor Hanescu
+7,3,1,7,6-3 6-4 6-4,Roger Federer beat Albert Montanes
+7,4,1,9,6-2 6-3 6-4,Roger Federer beat Lleyton Hewitt
+7,5,1,7,2-6 6-3 6-0 7-5,Roger Federer beat Nikolay Davydenko
+7,6,1,11,6-2 6-3 6-2,Roger Federer beat Jo-Wilfried Tsonga
+7,7,1,6,6-3 6-4 7-6(11),Roger Federer beat Andy Murray
+8,1,1,13,6-1 6-1 6-3,Roger Federer beat Lukas Lacko
+8,2,1,6,6-2 6-3 4-6 4-6 6-3,Roger Federer beat Gilles Simon
+8,3,1,11,6-3 6-3 6-1,Roger Federer beat Xavier Malisse
+8,4,1,7,6-3 3-6 6-3 6-2,Roger Federer beat Tommy Robredo
+8,5,1,11,6-1 6-3 6-3,Roger Federer beat Stanislas Wawrinka
+8,6,0,5,7-6(3) 7-5 6-4,Novak Djokovic beat Roger Federer
+8,7,-1,-1,,Player did not play this match
+9,1,1,10,7-5 6-2 6-2,Roger Federer beat Alexander Kudryavtsev
+9,2,-1,-1,,Walkover for Roger Federer
+9,3,1,6,7-6(6) 7-5 6-3,Roger Federer beat Ivo Karlovic
+9,4,1,10,6-4 6-2 6-2,Roger Federer beat Bernard Tomic
+9,5,1,9,6-4 6-3 6-2,Roger Federer beat Juan Martin Del Potro
+9,6,0,1,6-7(5) 6-2 7-6(5) 6-4,Rafael Nadal beat Roger Federer
+9,7,-1,-1,,Player did not play this match
+10,1,1,11,6-2 6-4 6-1,Roger Federer beat Benoit Paire
+10,2,1,7,6-3 6-4 6-4,Roger Federer beat Nikolay Davydenko
+10,3,1,8,6-4 7-6(5) 6-1,Roger Federer beat Bernard Tomic
+10,4,1,7,6-4 7-6(4) 6-2,Roger Federer beat Milos Raonic
+10,5,1,1,7-6(4) 4-6 7-6(4) 3-6 6-3,Roger Federer beat Jo-Wilfried Tsonga
+10,6,0,5,6-4 6-7(5) 6-3 6-7(2) 6-2,Andy Murray beat Roger Federer
+10,7,-1,-1,,Player did not play this match
+11,1,1,8,6-4 6-4 6-2,Roger Federer beat James Duckworth
+11,2,1,10,6-2 6-1 7-6(4),Roger Federer beat Blaz Kavcic
+11,3,1,11,6-2 6-2 6-3,Roger Federer beat Teimuraz Gabashvili
+11,4,1,7,6-3 7-5 6-4,Roger Federer beat Jo-Wilfried Tsonga
+11,5,1,7,6-3 6-4 6-7(6) 6-3,Roger Federer beat Andy Murray
+11,6,0,7,7-6(4) 6-3 6-3,Rafael Nadal beat Roger Federer
+11,7,-1,-1,,Player did not play this match
