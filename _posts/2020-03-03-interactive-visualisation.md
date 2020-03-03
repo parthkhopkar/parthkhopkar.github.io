@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap" rel="stylesheet">
+        <style>
+        	.center {
+			  display: block;
+			  margin-left: auto;
+			  margin-right: auto;
+			}
+            body {
+            background: black;
+            }
+            rect.bordered {
+            stroke: #E6E6E6;
+            stroke-width:2px;   
+            }
+            text.mono {
+            font-size: 9pt;
+            font-family: Open Sans, courier;
+            fill: #fff;
+            }
+            text.axis-workweek {
+            fill: #fff;
+            }
+            text.axis-worktime {
+            fill: #000;
+            }
+            div.tooltip {	
+            position: absolute;			
+            text-align: center;			
+            width: 200px;					
+            height: 80px;					
+            padding: 2px;				
+            font: 16px Roboto;		
+            background: ivory;	
+            border: 0px;		
+            border-radius: 8px;			
+            pointer-events: none;			
+            }
+            h2{
+            font-family: 'Open Sans';
+            color: white;
+            }
+            p{
+            font-family: 'Open Sans';
+            color: white;
+            }
+            /* Button Styles */
+
+			.dataset-button{
+				color: white !important;
+				text-decoration: none;
+				background: black;
+				padding: 20px;
+				border: 2px solid white !important;
+				display: inline-block;
+				transition: all 0.4s ease 0s;
+				font-family: Open Sans, ;
+				font-size:14pt;
+				}
+			.dataset-button:hover {
+				color: black !important;
+				background: white;
+				border-color: white !important;
+				transition: all 0.4s ease 0s;
+				}
+			.dataset-button-active {
+				color: black !important;
+				text-decoration: none;
+				background: white;
+				padding: 20px;
+				border: 2px solid white !important;
+				display: inline-block;
+				transition: all 0.4s ease 0s;
+				font-family: Open Sans, ;
+				font-size:14pt;
+				}		
+        </style>
+        <script src="https://d3js.org/d3.v3.js"></script>
+    </head>
+    <body>
+        <h2 style="text-align: center;">Players with the most wins at Australian Open from 2004 to 2014</h2>
+        <img src="/img/ao.png" style="height:80px" class="center">
+        <div id="main" style="text-align: center;">
+            <div id="dataset-picker"></div>
+            <div id="chart" style="display: inline-block; position: relative;">
+            	<div id="player-info" style="position: absolute;top: 100px;left: 500px">
+            	<p id="player_name" style="font-size: 28pt;text-align: center;"></p>
+                <img id="player_img" src="">
+                <p id="player_wins" style="font-size:18pt;text-align: center;"></p>
+            </div>
+            </div>
+            
+            <p>Mouseover the tiles for more details and click on player names at the top to view their stats.<br>The colors on the heatmap represent the difference in the number of games between the 2 players. If the player won by 6-3 6-2 6-1
+ then the game difference is 12</p>
+        </div>
+        <script type="text/javascript">
+            //Div for the tooltip	
+            var div = d3.select("body").append("div")	
+                .attr("class", "tooltip")				
+                .style("opacity", 0);
+            
+            var margin = { top: 50, right: 0, bottom: 100, left: 40 },
+                width = 960 - margin.left - margin.right,
+                height = 730 - margin.top - margin.bottom,
+                gridSize = Math.floor(width / 19),
+                legendElementWidth = gridSize*2,
+                //buckets = 9,
+                buckets = 5
+                colors = ["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"], // alternatively colorbrewer.YlGnBu[9]
+                //5
+                colors_win = ["CFF4D2", "7BE495", "56C596", "329D9C", "#205072"],
+                //23
+                colors_lose = ["FFDCA2", "FFBD71", "FD8F52", "FE676E", "C73866"],
+                years = ["2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014"],
+                rounds = ["First", "Second", "Third", "Fourth", "Quarter", "Semi", "Final"],
+                datasets = ["Roger Federer", "Novak Djokovic", "Rafael Nadal", "Andy Murray", "Andy Roddick"],
+                player_wins = {"Roger Federer": 63, "Novak Djokovic": 43, "Rafael Nadal": 41, "Andy Murray": 33, "Andy Roddick": 32};
+
+            
+            var svg = d3.select("#chart").append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom + 30)
+                .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            
+            var yearLabels = svg.selectAll(".yearLabel")
+                .data(years)
+                .enter().append("text")
+                  .text(function (d) { return d; })
+                  .attr("x", 0)
+                  .attr("y", function (d, i) { return i * gridSize; })
+                  .style("text-anchor", "end")
+                  .style("color", "white")
+                  .attr("transform", "translate(-6," + gridSize / 1.5 + ")")
+                  .attr("class", function (d, i) { return ((i >= 0 && i <= 4) ? "dayLabel mono axis axis-workweek" : "dayLabel mono axis"); });
+            
+            var roundLabels = svg.selectAll(".roundLabel")
+                .data(rounds)
+                .enter().append("text")
+                  .text(function(d) { return d; })
+                  .attr("x", function(d, i) { return i * gridSize; })
+                  .attr("y", 0)
+                  .style("text-anchor", "middle")
+                  .attr("transform", "translate(" + gridSize / 2 + ", -6)")
+                  .attr("class", function(d, i) { return ((i >= 7 && i <= 16) ? "timeLabel mono axis axis-worktime" : "timeLabel mono axis"); });
+            
+            
+            var heatmapChart = function(csvFile) {
+              d3.csv("data/" + csvFile.replace(/\s/g, '') + ".csv",
+              function(d) {
+                return {
+                  year: +d.year,
+                  round: +d.round,
+                  result: +d.result,
+                  game_diff: +d.game_diff,
+                  score: d.score,
+                  final: d.final
+                };
+              },
+              function(error, data) {
+              	// d3.selectAll(".dataset-button").style("background", "black").style("color", "white");
+              	// d3.select("#"+csvFile.replace(/\s/g, '')).attr("class", "dataset-button-active");
+                var colorScale = d3.scale.quantile()
+                    .domain([0, buckets - 1, d3.max(data, function (d) { return d.game_diff; })])
+                    .range(colors);
+            
+               var colorScaleWin = d3.scale.quantile()
+                    .domain([0, buckets - 1, d3.max(data, function (d) { return d.game_diff; })])
+                    .range(colors_win);
+            
+               var colorScaleLose = d3.scale.quantile()
+                    .domain([0, buckets - 1, d3.max(data, function (d) { return d.game_diff; })])
+                    .range(colors_lose);
+            
+                var cards = svg.selectAll(".round")
+                    .data(data, function(d) {return d.year+':'+d.round;});
+            
+                cards.append("title");
+            
+            
+                cards.enter().append("rect")
+                    .attr("x", function(d) { return (d.round - 1) * gridSize; })
+                    .attr("y", function(d) { return (d.year - 1) * gridSize; })
+                    .attr("rx", 4)
+                    .attr("ry", 4)
+                    .attr("class", "hour bordered")
+                    .attr("width", gridSize)
+                    .attr("height", gridSize)
+                    .style("fill", "#FFFFFF")
+                    .style("stroke", "black")
+                    //Mouseover tooltip
+                    .on("mouseover", function(d) {		
+                    div.transition()		
+                        .duration(200)		
+                        .style("opacity", .9);		
+                    div.html(rounds[d.round-1] + "<br/>" + d.final + "<br/>" + d.score)	
+                        .style("left", (d3.event.pageX) + "px")		
+                        .style("top", (d3.event.pageY - 28) + "px");	
+                    })					
+                .on("mouseout", function(d) {		
+                    div.transition()		
+                        .duration(500)		
+                        .style("opacity", 0);	
+                });
+            
+                cards.transition().duration(1000)
+                    .style("fill", function(d) { 
+                    	if (d.result == -1){
+                    		return "#FFFFFF";
+                    	}
+            
+                    	else if (d.result == 0){
+                    		return colorScaleLose(d.game_diff);
+                    	}
+                    	return colorScaleWin(d.game_diff); });
+            
+                cards.select("title").text(function(d) { return d.game_diff; });
+                
+                cards.exit().remove();
+            
+                var legend_win = svg.selectAll(".legend")
+                    .data([0].concat(colorScaleWin.quantiles()), function(d) { return d; });
+
+                legend_win.enter().append("g")
+                    .attr("class", "legend");
+
+                legend_win.append("rect")
+                  .attr("x", function(d, i) { return legendElementWidth * i; })
+                  .attr("y", height)
+                  .attr("width", legendElementWidth)
+                  .attr("height", gridSize / 2)
+                  .style("fill", function(d, i) { return colors_win[i]; });
+            
+            	legend_win.append("text")
+	            	.attr("class", "mono")
+	            	.text("Win game difference")
+	                .attr("x", 0)
+	                  .attr("y", height - 5);
+
+                legend_win.append("text")
+                  .attr("class", "mono")
+                  .text(function(d) { return "≥ " + Math.round(d); })
+                  .attr("x", function(d, i) { return legendElementWidth * i; })
+                  .attr("y", height + gridSize);
+            
+                legend_win.exit().remove();
+            
+                var legend_lose = svg.selectAll(".legend")
+                    .data([0].concat(colorScaleLose.quantiles()), function(d) { return d; });
+            
+                legend_lose.enter().append("g")
+                    .attr("class", "legend");
+            
+                legend_lose.append("rect")
+                  .attr("x", function(d, i) { return legendElementWidth * i; })
+                  .attr("y", height + 60)
+                  .attr("width", legendElementWidth)
+                  .attr("height", gridSize / 2)
+                  .style("fill", function(d, i) { return colors_lose[i]; });
+
+                legend_lose.append("text")
+	            	.attr("class", "mono")
+	            	.text("Loss game difference")
+	                .attr("x", 0)
+	                  .attr("y", height + gridSize + 55);
+            
+                legend_lose.append("text")
+                  .attr("class", "mono")
+                  .text(function(d) { return "≥ " + Math.round(d); })
+                  .attr("x", function(d, i) { return legendElementWidth * i; })
+                  .attr("y", height + gridSize);
+            
+                legend_lose.exit().remove();
+            
+                //Add player info
+
+             var info = d3.select("#player-info")
+             			  .style("position", "absolute")
+             			  // .style("left", (margin.left + 100) + "")
+             			  // .style("top", (margin.right + 300) + "");
+             			  // .attr("transform", "translate(" + (margin.left + 100) + "," + (margin.top + 1000) + ")");
+            
+             info.transition().duration(1000);
+             d3.select("#player_name").html(csvFile);
+             d3.select("#player_name").html(csvFile + "  " + "<img id=\"player_flag\" src=\"img/" + csvFile.replace(/\s/g, '') + "Flag.png\" style=\"vertical-align: middle;\">");
+             d3.select("#player_flag").attr("src","img/" + csvFile.replace(/\s/g, '') + "Flag.png");
+             d3.select("#player_img").attr("src","img/" + csvFile.replace(/\s/g, '') + ".png");
+             d3.select("#player_wins").html(player_wins[csvFile] + " wins");
+             
+            
+              });  
+            };
+            
+            heatmapChart(datasets[0]);
+            
+            var arr = ["Roger Federer", "Novak Djokovic", "Rafael Nadal", "Andy Murray", "Andy Roddick"];
+            var datasetpicker = d3.select("#dataset-picker").selectAll(".dataset-button")
+              .data(arr);
+            
+            
+            datasetpicker.enter()
+              .append("input")
+              .attr("value", function(arr){ return arr })
+              .attr("type", "button")
+              .attr("class", "dataset-button")
+              .data(datasets)
+              .attr("id", function(d) {return d.replace(/\s/g, '')})
+              .on("click", function(d) {
+                heatmapChart(d);
+              });
+        </script>
+    </body>
+</html>
