@@ -4,11 +4,11 @@
     <head>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap" rel="stylesheet">
         <style>
-        	.center {
-			  display: block;
-			  margin-left: auto;
-			  margin-right: auto;
-			}
+          .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
             body {
             background: black;
             }
@@ -27,17 +27,17 @@
             text.axis-worktime {
             fill: #000;
             }
-            div.tooltip {	
-            position: absolute;			
-            text-align: center;			
-            width: 200px;					
-            height: 80px;					
-            padding: 2px;				
-            font: 16px Roboto;		
-            background: ivory;	
-            border: 0px;		
-            border-radius: 8px;			
-            pointer-events: none;			
+            div.tooltip { 
+            position: absolute;     
+            text-align: center;     
+            width: 200px;         
+            height: 80px;         
+            padding: 2px;       
+            font: 16px Roboto;    
+            background: ivory;  
+            border: 0px;    
+            border-radius: 8px;     
+            pointer-events: none;     
             }
             h2{
             font-family: 'Open Sans';
@@ -49,34 +49,34 @@
             }
             /* Button Styles */
 
-			.dataset-button{
-				color: white !important;
-				text-decoration: none;
-				background: black;
-				padding: 20px;
-				border: 2px solid white !important;
-				display: inline-block;
-				transition: all 0.4s ease 0s;
-				font-family: Open Sans, ;
-				font-size:14pt;
-				}
-			.dataset-button:hover {
-				color: black !important;
-				background: white;
-				border-color: white !important;
-				transition: all 0.4s ease 0s;
-				}
-			.dataset-button-active {
-				color: black !important;
-				text-decoration: none;
-				background: white;
-				padding: 20px;
-				border: 2px solid white !important;
-				display: inline-block;
-				transition: all 0.4s ease 0s;
-				font-family: Open Sans, ;
-				font-size:14pt;
-				}		
+      .dataset-button{
+        color: white !important;
+        text-decoration: none;
+        background: black;
+        padding: 20px;
+        border: 2px solid white !important;
+        display: inline-block;
+        transition: all 0.4s ease 0s;
+        font-family: Open Sans, ;
+        font-size:14pt;
+        }
+      .dataset-button:hover {
+        color: black !important;
+        background: white;
+        border-color: white !important;
+        transition: all 0.4s ease 0s;
+        }
+      .dataset-button-active {
+        color: black !important;
+        text-decoration: none;
+        background: white;
+        padding: 20px;
+        border: 2px solid white !important;
+        display: inline-block;
+        transition: all 0.4s ease 0s;
+        font-family: Open Sans, ;
+        font-size:14pt;
+        }   
         </style>
         <script src="https://d3js.org/d3.v3.js"></script>
     </head>
@@ -86,8 +86,8 @@
         <div id="main" style="text-align: center;">
             <div id="dataset-picker"></div>
             <div id="chart" style="display: inline-block;"></div>
-            <div id="player-info" style="display: inline-block;">
-            	<p id="player_name" style="font-size: 28pt;text-align: center;"></p>
+            <div id="player-info" style="display: inline-block;position: absolute;left: 700px;top: 350px">
+              <p id="player_name" style="font-size: 28pt;text-align: center;"></p>
                 <img id="player_img" src="">
                 <p id="player_wins" style="font-size:18pt;text-align: center;"></p>
             </div>
@@ -95,9 +95,9 @@
  then the game difference is 12</p>
         </div>
         <script type="text/javascript">
-            //Div for the tooltip	
-            var div = d3.select("body").append("div")	
-                .attr("class", "tooltip")				
+            //Div for the tooltip 
+            var div = d3.select("body").append("div") 
+                .attr("class", "tooltip")       
                 .style("opacity", 0);
             
             var margin = { top: 50, right: 0, bottom: 100, left: 40 },
@@ -159,8 +159,8 @@
                 };
               },
               function(error, data) {
-              	// d3.selectAll(".dataset-button").style("background", "black").style("color", "white");
-              	// d3.select("#"+csvFile.replace(/\s/g, '')).attr("class", "dataset-button-active");
+                // d3.selectAll(".dataset-button").style("background", "black").style("color", "white");
+                // d3.select("#"+csvFile.replace(/\s/g, '')).attr("class", "dataset-button-active");
                 var colorScale = d3.scale.quantile()
                     .domain([0, buckets - 1, d3.max(data, function (d) { return d.game_diff; })])
                     .range(colors);
@@ -190,30 +190,30 @@
                     .style("fill", "#FFFFFF")
                     .style("stroke", "black")
                     //Mouseover tooltip
-                    .on("mouseover", function(d) {		
-                    div.transition()		
-                        .duration(200)		
-                        .style("opacity", .9);		
-                    div.html(rounds[d.round-1] + "<br/>" + d.final + "<br/>" + d.score)	
-                        .style("left", (d3.event.pageX) + "px")		
-                        .style("top", (d3.event.pageY - 28) + "px");	
-                    })					
-                .on("mouseout", function(d) {		
-                    div.transition()		
-                        .duration(500)		
-                        .style("opacity", 0);	
+                    .on("mouseover", function(d) {    
+                    div.transition()    
+                        .duration(200)    
+                        .style("opacity", .9);    
+                    div.html(rounds[d.round-1] + "<br/>" + d.final + "<br/>" + d.score) 
+                        .style("left", (d3.event.pageX) + "px")   
+                        .style("top", (d3.event.pageY - 28) + "px");  
+                    })          
+                .on("mouseout", function(d) {   
+                    div.transition()    
+                        .duration(500)    
+                        .style("opacity", 0); 
                 });
             
                 cards.transition().duration(1000)
                     .style("fill", function(d) { 
-                    	if (d.result == -1){
-                    		return "#FFFFFF";
-                    	}
+                      if (d.result == -1){
+                        return "#FFFFFF";
+                      }
             
-                    	else if (d.result == 0){
-                    		return colorScaleLose(d.game_diff);
-                    	}
-                    	return colorScaleWin(d.game_diff); });
+                      else if (d.result == 0){
+                        return colorScaleLose(d.game_diff);
+                      }
+                      return colorScaleWin(d.game_diff); });
             
                 cards.select("title").text(function(d) { return d.game_diff; });
                 
@@ -232,11 +232,11 @@
                   .attr("height", gridSize / 2)
                   .style("fill", function(d, i) { return colors_win[i]; });
             
-            	legend_win.append("text")
-	            	.attr("class", "mono")
-	            	.text("Win game difference")
-	                .attr("x", 0)
-	                  .attr("y", height - 5);
+              legend_win.append("text")
+                .attr("class", "mono")
+                .text("Win game difference")
+                  .attr("x", 0)
+                    .attr("y", height - 5);
 
                 legend_win.append("text")
                   .attr("class", "mono")
@@ -260,10 +260,10 @@
                   .style("fill", function(d, i) { return colors_lose[i]; });
 
                 legend_lose.append("text")
-	            	.attr("class", "mono")
-	            	.text("Loss game difference")
-	                .attr("x", 0)
-	                  .attr("y", height + gridSize + 55);
+                .attr("class", "mono")
+                .text("Loss game difference")
+                  .attr("x", 0)
+                    .attr("y", height + gridSize + 55);
             
                 legend_lose.append("text")
                   .attr("class", "mono")
@@ -274,10 +274,12 @@
                 legend_lose.exit().remove();
             
                 //Add player info
+
              var info = d3.select("#player-info")
-             			  .style("position", "absolute")
-             			  .style("left", "800px")
-             			  .style("top", "300px");
+                    .style("position", "absolute")
+                    // .style("left", (margin.left + 100) + "")
+                    // .style("top", (margin.right + 300) + "");
+                    // .attr("transform", "translate(" + (margin.left + 100) + "," + (margin.top + 1000) + ")");
             
              info.transition().duration(1000);
              d3.select("#player_name").html(csvFile);
