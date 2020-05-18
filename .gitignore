@@ -1,9 +1,0 @@
-_site
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
-vendor
-about.markdown
-Gemfile*
-Gemfile.lock
-index.markdown

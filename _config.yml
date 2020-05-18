@@ -1,9 +1,0 @@
-repository: parthkhopkar/parthkhopkar.github.io
-theme: jekyll-theme-slate
-name: Parth Khopkar
-markdown: kramdown
-paginate: 5
-paginate_path: "/blog/page:num/"
-
-# applies pretty for all
-permalink: pretty
