@@ -49,3 +49,12 @@ $on-laptop:        800px !default;
   "minima/layout",
   "minima/syntax-highlighting"
 ;
+
+// Added by me
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+
+body{
+	font-family: 'Merriweather', serif;
+	background-color: #EAE7DC;
+}
