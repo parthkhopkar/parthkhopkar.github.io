@@ -28,7 +28,12 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
+permalink: pretty
 
+collections:
+  posts:
+    output: true
+    permalink: /blog/:categories/:year/:month/:day/:title/
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
