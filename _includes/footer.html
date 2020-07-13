@@ -38,13 +38,13 @@
     $("script[type='math/tex']").replaceWith(
       function(){
         var tex = $(this).text();
-        return katex.renderToString(tex, {displayMode: false});
+        return katex.renderToString(tex, {displayMode: false, throwOnError: false});
     });
     
     $("script[type='math/tex; mode=display']").replaceWith(
       function(){
         var tex = $(this).text();
-        return katex.renderToString(tex.replace(/%.*/g, ''), {displayMode: true});
+        return katex.renderToString(tex.replace(/%.*/g, ''), {displayMode: true, throwOnError: false});
     });
   </script>
 
