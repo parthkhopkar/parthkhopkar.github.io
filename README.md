@@ -3,6 +3,6 @@ Parth's personal website and blog
 
 To serve locally:
 
-````bash
+```bash
 $ budle exec jekyll serve
-````
+```
