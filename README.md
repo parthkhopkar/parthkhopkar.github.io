@@ -1,4 +1,4 @@
-# parthkhopkar.com | parthkhopkar.github.io
+# parthkhopkar.github.io
 Parth's personal website and blog
 
 To serve locally:
