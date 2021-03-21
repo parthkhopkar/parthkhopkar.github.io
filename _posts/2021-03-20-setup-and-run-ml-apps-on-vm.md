@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Seting up a Virtual Machine to run ML applications"
+title: "Setting up a Virtual Machine to run ML applications"
 date: 2021-03-20
 ---
 
