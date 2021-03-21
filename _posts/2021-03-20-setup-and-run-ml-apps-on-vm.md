@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Set up and run ML applications on a Virtual Machine"
+date: 2021-03-20
 ---
 
 I have often found myself needing to provision a new VM with a GPU to run Machine Learning workloads. Modern cloud services and containerization have made it easy to go from provisioning to running experiments in a matter of minutes. Here I have consolidated how to set up a VM to run ML applications with minimal configuration by using TensorFlow's Docker containers.
