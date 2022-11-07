@@ -4,6 +4,7 @@ layout: home
 
 <img src="./assets/img/parth.jpg" id="home-page-picture">
 
+### About Me
 
 Hello there! I am Parth Khopkar, an ML Engineer at Micron where I am working on making machine learning inference faster and more efficient. 
 
