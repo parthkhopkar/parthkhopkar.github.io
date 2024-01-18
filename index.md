@@ -20,7 +20,7 @@ I will be more than happy to talk to you if you reach out to me via [email](mail
 
 My thesis focused on using imitation learning to control a swarm of drones so that they can avoid obstacles in a simulated environment and reach the desired goal location. A graph neural network (GNN) based controller learns to imitate how birds flock together in nature and is then used to decide the velocity that each drone should target.
 
-This work was a featured project under ASU's MORE program. Read more about that [here](https://furi.engineering.asu.edu/participant/khopkar-parth/).
+This work was a featured project under ASU's MORE program. Read more about that [here](https://forge.engineering.asu.edu/furiproject/control-and-coordination-of-multi-robot-swarm-systems-2/).
 
 <img src="./assets/img/masters_thesis_drones.png" id="masters-thesis-drone-picture" style="height:150px;">
 
