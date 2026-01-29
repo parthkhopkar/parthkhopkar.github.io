@@ -6,7 +6,7 @@ layout: home
 
 ### About Me
 
-Hello there! I am Parth Khopkar, an ML Engineer at RadiusAI where I am working on making retail store operations more efficient using machine learning.
+Hello there! I am Parth Khopkar, an ML Engineer interested in computer vision and multi-agent systems.
 
 I like to automate things and bring order to chaos. Trying to get my code to do exactly as I want by reading more and more fills up most of my days.
 
