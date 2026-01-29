@@ -299,11 +299,11 @@ PLATFORMS
 DEPENDENCIES
   base64
   csv
-  github-pages (~> 231)
-  jekyll-feed (~> 0.6)
-  kramdown (~> 2.4.0)
-  minima (~> 2.0)
-  webrick (~> 1.8)
+  github-pages
+  jekyll-feed (~> 0.17)
+  kramdown-parser-gfm
+  minima (~> 2.5)
+  webrick
 
 BUNDLED WITH
    2.5.7
